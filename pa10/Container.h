@@ -11,12 +11,12 @@
 class Container {
 public:
     using value_type = int;
-    using size_type = std::size_t;
+    using size_type  = std::size_t;
 
     static const size_type CAPACITY = 20;  ///< Maximum storage capacity.
 
     /// Constructs the Container.
-    void Container2();
+    Container();
 
     /// Returns the number of items in the container.
     /// @returns The number of items in the container.
