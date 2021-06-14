@@ -10,7 +10,7 @@ int main() {
     Container ages;
 
     get_ages(ages);
-    check_ages(ages);
+    // check_ages(ages);
 
     return EXIT_SUCCESS;
 }
@@ -20,7 +20,7 @@ int main() {
 /// types a negative value (sentinel).
 void get_ages(Container& container) {
     int age;
-
+    cout << container.size() << ": container.size() " << Container::CAPACITY << ": container::CAPACITY" << endl;
     cout << "Enter ages of family members (negative value to exit):\n";
     while (container.size() < Container::CAPACITY && cin >> age && !(age < 0)) {
         container.insert(age);
