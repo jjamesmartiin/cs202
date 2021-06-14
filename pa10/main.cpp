@@ -10,8 +10,9 @@ int main() {
     Container ages;
 
     get_ages(ages);
-    // check_ages(ages);
+    check_ages(ages);
 
+    // ages.write();
     return EXIT_SUCCESS;
 }
 
