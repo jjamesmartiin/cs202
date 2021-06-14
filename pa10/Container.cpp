@@ -32,11 +32,14 @@ void Container::insert(const value_type& value){
 }
 
 void Container::erase(const value_type& target){
-    for (size_t i = 0; i < Container::used; i++)
+    if (target != -1)
     {
-        if (Container::data[i] == target)
+        for (size_t i = 0; i < Container::used; i++)
         {
-            Container::data[i] = -1;
+            if (Container::data[i] == target)
+            {
+                Container::data[i] = -1;
+            }
         }
     }
 }
@@ -64,13 +67,17 @@ Container::size_type Container::count(const value_type& target) const{
 
 bool Container::contains(const value_type& target) const{
     bool trueOrFalse = false;
-    for (size_t i = 0; i < Container::used; i++)
+    if (target != -1)
     {
-        if (Container::data[i] == target)
+        for (size_t i = 0; i < Container::used; i++)
         {
-            trueOrFalse = true;
+            if (Container::data[i] == target)
+            {
+                trueOrFalse = true;
+            }
         }
     }
+    
     return trueOrFalse;
 }
 
