@@ -4,6 +4,10 @@ using namespace std;
 
 Container::Container(){
     Container::used = 0;
+    for (size_t i = 0; i < Container::CAPACITY; i++)
+    {
+        Container::data[i] = -1;
+    }
 }
 
 Container::size_type Container::size() const{
@@ -22,6 +26,7 @@ bool Container::empty() const{
 }
 
 void Container::insert(const value_type& value){
+
     Container::data[Container::used] = value;
     Container::used += 1;
 }
@@ -73,7 +78,9 @@ void Container::write(std::ostream& output){
     output << "{";
     for (size_t i = 0; i < used; i++)
     {
-        output << Container::data[i] << ",";
+        if(data[i] != -1){
+            output << Container::data[i] << ",";
+        }
     }
     output << "}" << endl;
 }
