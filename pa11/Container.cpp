@@ -1,5 +1,6 @@
 #include "Container.h"
 #include <iostream>
+
 using namespace std;
 
 // Container constructor function, sets array to -1 values since that number can't be achieved
@@ -7,11 +8,7 @@ Container::Container(){
     // sets index to 0 to start
     Container::used = 0;
     // for loop for looping through the array 
-    for (size_t i = 0; i < Container::CAPACITY; i++)
-    {
-        // setting the indexed data array to -1
-        Container::data[i] = -1;
-    }
+
 }
 
 // function for returning the "size" of the arrary, actually just how many are used since it's a static array
@@ -98,9 +95,11 @@ void Container::write(std::ostream& output) const{
     output << "{";
     for (size_t i = 0; i < used; i++)
     {
-        if(data[i] != -1){
-            output << Container::data[i] << ",";
+        output << data[i];
+        if (i < used - 1)
+        {
+            output << ",";
         }
     }
-    output << "}" << endl;
+    output << "}";
 }
