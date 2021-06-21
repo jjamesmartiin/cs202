@@ -94,7 +94,7 @@ bool Container::contains(const value_type& target) const{
 }
 
 // write function for writing the printing the entier data[] array to output
-void Container::write(std::ostream& output){
+void Container::write(std::ostream& output) const{
     output << "{";
     for (size_t i = 0; i < used; i++)
     {

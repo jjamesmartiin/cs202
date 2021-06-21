@@ -52,9 +52,9 @@ public:
 
     /// Writes all items to an output stream in the format: {42,73,0,-59,7}
     /// @param output The output stream (defaults to std::cout).
-    void write(std::ostream& output = std::cout);
+    void write(std::ostream& output = std::cout) const;
 
-private:
+protected:
     size_type  used;            ///< Number of items in Container.
     value_type data[CAPACITY];  ///< Array of items.
 };
