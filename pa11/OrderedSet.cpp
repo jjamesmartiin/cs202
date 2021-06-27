@@ -5,46 +5,45 @@ OrderedSet::OrderedSet(){
 }
 
 void OrderedSet::insert(const value_type& value){
-    if(used != 4){
-        data[used] = value;
+    size_type index = 0; // index of insertion point
+
+    // locate insertion point
+    for (; index < size() && data[index] < value; ++index){
+
     }
-    else {
-        int temp;
-        data[4] = value;
-        for (size_t i = 0; i < 5; i++)
+    if (index == size() || (index < size()) && data[index] != value){
+        assert(size() < CAPACITY);
+
+        // copy items "right" to make room for new item
+        for (auto i = size(); i > index; --i)
         {
-            for (size_t j = i+1; j < 5; j++)
-            {
-                if(data[i] > data[j])
-                {
-                    temp = data[i];
-                    data[i] = data[j];
-                    data[j] = temp;
-                }
-            }
+            data[index] = value;
+            ++used;
         }
     }
-    used++;
 }
 void OrderedSet::erase(const value_type& target){
-    for (size_t i = 0; i < used; i++)
-    {
-        data[i] = -1;
+    size_type index = 0;
+
+    for (; index < size() && data[index] != target; ++index){
+
     }
-    used = 0;
+
+    if (index != size())
+    {
+        for (auto i = index; i < size(); ++i)
+        {
+            data[i] = data[i + 1];
+        }
+        --used;
+    }
 }
 
 bool OrderedSet::contains(const value_type& target) const{
-    bool trueOrFalse = false;
-    if (target != -1) // ignore -1
-    {
-        for (size_t i = 0; i < Container::used; i++)
-        {
-            if (Container::data[i] == target)
-            {
-                trueOrFalse = true;
-            }
-        }
+    size_type index = 0;
+
+    for (; index < size() && data[index] < target; ++index){
+
     }
-    return trueOrFalse;
+    return index != size() && data[index] == target;
 }

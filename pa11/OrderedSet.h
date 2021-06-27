@@ -9,9 +9,9 @@
 class OrderedSet : public Container {
 public:
     OrderedSet();
-        void insert(const value_type& value);
-        void erase(const value_type& target);
-        bool contains(const value_type& target) const;
+    void insert(const value_type& value);
+    void erase(const value_type& target);
+    bool contains(const value_type& target) const;
     };
 
-    #endif /* ORDERED_SET_H */
+#endif /* ORDERED_SET_H */
