@@ -8,7 +8,7 @@
 
 class OrderedSet : public Container {
 public:
-    OrderedSet();
+    OrderedSet() : Container() {};
     void insert(const value_type& value);
     void erase(const value_type& target);
     bool contains(const value_type& target) const;
