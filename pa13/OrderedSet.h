@@ -86,6 +86,16 @@ public:
     /// @returns true if target is found in the container, otherwise false.
     bool contains(const value_type &target) const;
 
+    /// Replaces the contents of the container with a copy of the contents of rhs.
+    OrderedSet& operator=(const OrderedSet& rhs);  
+    
+    /// Modifies this OrderedSet to hold the set union of this and other.
+    /// @returns this
+    OrderedSet& operator+=(const OrderedSet& other);
+
+    /// Modifies this OrderedSet to hold the set difference of this and other.
+    /// @returns this
+    OrderedSet& operator-=(const OrderedSet& other);
 private:
     size_type used; ///< Number of items in container
     size_type capacity; ///< Physical cacpacity of container
@@ -104,6 +114,27 @@ bool equals(const OrderedSet &lhs, const OrderedSet &rhs);
 /// @param output The output stream
 /// @param oset The OrderedSet to write
 void write(std::ostream &output, const OrderedSet &oset);
+
+/// Equality comparison operator.
+/// @returns true if lhs compares equal to rhs, otherwise false
+bool operator==(const OrderedSet& lhs, const OrderedSet& rhs);
+
+/// Inequality comparison operator.
+/// @returns true if lhs does not compare equal to rhs, otherwise false
+bool operator!=(const OrderedSet& lhs, const OrderedSet& rhs);
+
+/// Returns the union of lhs and rhs.
+/// @returns A new OrderedSet that is the union of lhs and rhs.
+OrderedSet operator+(const OrderedSet& lhs, const OrderedSet& rhs);
+
+/// Returns the set difference of lhs and rhs.
+/// @returns A new OrderedSet that is the difference of lhs and rhs.
+OrderedSet operator-(const OrderedSet& lhs, const OrderedSet& rhs);
+
+/// Writes a formatted representation of rhs to output.
+/// @returns output
+std::ostream& operator<<(std::ostream& output, const OrderedSet& oset);
+
 
 #endif /* ORDERED_SET_H */
 

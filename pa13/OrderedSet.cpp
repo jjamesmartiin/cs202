@@ -35,7 +35,7 @@ OrderedSet::OrderedSet(const std::initializer_list<value_type> &ilist)
 }
 
 OrderedSet::~OrderedSet(){
-    delete [] data;
+    delete[] data;
     data = nullptr;
     userd = capacity = 0;
 }
@@ -105,6 +105,23 @@ bool OrderedSet::contains(const value_type &target) const {
     return walk != end() && *walk == target;
 }
 
+OrderedSet::OrderedSet(const std::initializer_list<value_type>& ilist) {
+
+}
+
+OrderedSet::OrderedSet& operator=(const OrderedSet& rhs) {
+    // check for self assignment
+    if (&this != &rhs) {
+        // delete [] data;
+        // this = new OrderedSet;
+        this.used = rhs.used;
+        this.capacity = rhs.capacity;
+        this.data = rhs.data;
+        }
+    return *this;OrderedSet::OrderedSet& operator-=(const OrderedSet& other) {
+
+}
+
 void write(std::ostream &output, const OrderedSet &oset){
     char seperator[2] = "";
     output << '{';
@@ -126,4 +143,12 @@ bool equals(const OrderedSet &lhs, const OrderedSet &rhs){
         }
     }
     return are_equal;
+}
+
+bool operator==(const OrderedSet& lhs, const OrderedSet& rhs) {
+
+}
+
+bool operator!=(const OrderedSet& lhs, const OrderedSet& rhs) {
+
 }
