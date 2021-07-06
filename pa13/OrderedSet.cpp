@@ -124,11 +124,27 @@ OrderedSet::OrderedSet& operator=(const OrderedSet& rhs) {
 }
 
 OrdredSet::OrderedSet& operator+=(const OrderedSet& other) {
-    for (it = other.begin(); it != other.end(); ++it)
-    {
-        
+    pointer walk = begin();
+    pointer otherWalk = other.begin();
+    // locate item to be added
+    for (; walk != end(); ++walk){
+        if (walk != end() && !contains(otherWalk)){
+            insert(walk);
+        }
+        ++otherWalk;
     }
-    
+}
+
+OrdredSet::OrderedSet& operator-=(const OrderedSet& other) {
+    pointer walk = begin();
+    pointer otherWalk = other.begin();
+    // locate item to be erased
+    for (; walk != end(); ++walk){
+        if (walk != end() && !contains(otherWalk)){
+            erase(walk);
+        }
+        ++otherWalk;
+    }
 }
 
 void write(std::ostream &output, const OrderedSet &oset){
@@ -155,9 +171,42 @@ bool equals(const OrderedSet &lhs, const OrderedSet &rhs){
 }
 
 bool operator==(const OrderedSet& lhs, const OrderedSet& rhs) {
-
+    return lhs.size() == rhs.size() && lhs.count() == rhs.count();
 }
 
 bool operator!=(const OrderedSet& lhs, const OrderedSet& rhs) {
+    return lhs.size() != rhs.size() || lhs.count() != rhs.count();
+}
 
+OrderedSet operator+(const OrderedSet& lhs, const OrderedSet& rhs) {
+    pointer walk = begin();
+    pointer otherWalk = other.begin();
+    // locate item to be added
+    for (; walk != end(); ++walk){
+        if (walk != end() && !contains(otherWalk)){
+            insert(walk);
+        }
+        ++otherWalk;
+    }
+}
+
+OrderedSet operator-(const OrderedSet& lhs, const OrderedSet& rhs) {
+    pointer walk = begin();
+    pointer otherWalk = other.begin();
+    // locate item to be erased
+    for (; walk != end(); ++walk){
+        if (walk != end() && !contains(otherWalk)){
+            erase(walk);
+        }
+        ++otherWalk;
+    }
+}
+
+std::ostream& operator<<(std::ostream& output, const OrderedSet& oset) {
+//     pointer walk = begin()
+//     // locate item to be printed
+//     for (; walk != end(); ++walk){
+         // I thought about outputting to a string then returning 
+         // that as output
+//     }
 }
