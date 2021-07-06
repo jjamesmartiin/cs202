@@ -37,7 +37,7 @@ OrderedSet::OrderedSet(const std::initializer_list<value_type> &ilist)
 OrderedSet::~OrderedSet(){
     delete[] data;
     data = nullptr;
-    userd = capacity = 0;
+    used = capacity = 0;
 }
 
 void OrderedSet::insert(const value_type &value){
@@ -111,15 +111,24 @@ OrderedSet::OrderedSet(const std::initializer_list<value_type>& ilist) {
 
 OrderedSet::OrderedSet& operator=(const OrderedSet& rhs) {
     // check for self assignment
-    if (&this != &rhs) {
-        // delete [] data;
-        // this = new OrderedSet;
-        this.used = rhs.used;
-        this.capacity = rhs.capacity;
-        this.data = rhs.data;
-        }
-    return *this;OrderedSet::OrderedSet& operator-=(const OrderedSet& other) {
+    if (this != &rhs) {
+        delete[] data;
+        data = nullptr;
+        used = capacity = 0;
+        //used(0), capacity(count), data(new value_type[count])
+        new value_type[rhs.capacity] data;
+        capacity = rhs.capacity;
+        used = rhs.used;
+    }
+    return *this;
+}
 
+OrdredSet::OrderedSet& operator+=(const OrderedSet& other) {
+    for (it = other.begin(); it != other.end(); ++it)
+    {
+        
+    }
+    
 }
 
 void write(std::ostream &output, const OrderedSet &oset){
